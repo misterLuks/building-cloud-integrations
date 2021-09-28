@@ -9,12 +9,11 @@ const bcrypt = require('bcryptjs')
 
 // Set up global data state
 var data = require('./data')
-app.set('data', data)
 
 // Set up passport
 passport.use(new BasicStrategy(
     (email, password, done) => {
-        const searchResult = data.users.find(
+        const searchResult = data["users"].find(
             user => {
                 if (user.email === email){
                     if (bcrypt.compareSync(password, user.password)){
@@ -38,8 +37,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads
 
 // Import routes
-let usersRoutes = require('./routes/usersRouter')(app, passport)
-let itemsRoutes = require('./routes/itemsRouter')(app, passport)
+let usersRoutes = require('./routes/usersRouter')(app, passport, data)
+let itemsRoutes = require('./routes/itemsRouter')(app, passport, data)
 
 // use imported routes
 app.use('/users', usersRoutes)

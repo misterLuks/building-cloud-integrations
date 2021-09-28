@@ -1,11 +1,11 @@
-module.exports = function(app, passport){
+module.exports = function(app, passport, data){
     let router = require('express').Router()
     const Ajv = require('ajv')
     const ajv = new Ajv()
 
     //Initialize JSON Validator
-    const itemSchema = require('../schemas/item.schema.json')
-    const itemValidator = ajv.compile(itemSchema)
+    // const itemSchema = require('../schemas/item.schema.json')
+    // const itemValidator = ajv.compile(itemSchema)
 
     router.get('/', passport.authenticate('jwt', {session: false}),(req, res) => {
         res.send('hi item')

@@ -1,6 +1,6 @@
 
 
-module.exports = function(app, passport){
+module.exports = function(app, passport, data){
     const bcrypt = require('bcryptjs')
     let router = require('express').Router()
     const secrets = require('../secret.json')
@@ -15,9 +15,7 @@ module.exports = function(app, passport){
   
 
     router.get('/', (req, res) => {
-        let data = req.app.get('data')
         res.send(data.users)
-        console.log(data.dog)
     })
 
     //Used for testing purposes
@@ -27,7 +25,6 @@ module.exports = function(app, passport){
 
 
     router.post('/', (req, res) => {
-        let data = app.get('data')
         
         const validationResult = userValidator(req.body)
         if(validationResult) {
