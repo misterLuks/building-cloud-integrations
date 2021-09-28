@@ -3,6 +3,8 @@ const app = express()
 const passport = require('passport')
 const BasicStrategy = require('passport-http').BasicStrategy;
 const bcrypt = require('bcryptjs')
+const multer = require('multer')
+const upload = multer({ dest: 'imagesTest/' })
 
 
 
@@ -31,6 +33,11 @@ passport.use(new BasicStrategy(
         }
     }
 ))
+
+app.post('/test', upload.array('images', 4), (req, res) => {
+    console.log(req.files )
+    res.sendStatus(200)
+})
 
 // json parsing middleware (bodyparser is deprecated)
 app.use(express.urlencoded({extended: true}));
