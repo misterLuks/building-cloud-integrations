@@ -8,7 +8,25 @@ module.exports = function(app, passport, data){
     // const itemValidator = ajv.compile(itemSchema)
 
     router.get('/', passport.authenticate('jwt', {session: false}),(req, res) => {
-        res.send('hi item')
+        console.log(req.params.location)
+        res.send(data.items.filter(item => {
+            if (req.params.location != undefined) {
+                if (item.location != req.params.location) {
+                    return false;
+                }
+            }
+            if (req.params.date != undefined) {
+                if (item.location != req.params.location) {
+                    return false;
+                }
+            }
+            if (req.params.category != undefined) {
+                if (item.location != req.params.location) {
+                    return false;
+                }
+            }
+            return true
+        }))
     })
 
     router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {

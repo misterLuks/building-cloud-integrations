@@ -18,11 +18,6 @@ module.exports = function(app, passport, data){
         res.send(data.users)
     })
 
-    //Used for testing purposes
-    router.get('/dogs', (req, res) => {
-        res.sendStatus(200)
-    })
-
 
     router.post('/', (req, res) => {
         
@@ -38,6 +33,7 @@ module.exports = function(app, passport, data){
         
             data.users.push({
                 email: req.body.email,
+                username: req.body.username,
                 password: hashedPasswd
             })
             res.send("/users POST").sendStatus(200)
