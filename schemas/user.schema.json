@@ -2,38 +2,50 @@
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "http://example.com/example.json",
     "type": "object",
-    "title": "The root schema",
-    "description": "The root schema comprises the entire JSON document.",
+    "title": "The user schema",
+    "description": "The user schema for registration and login",
     "default": {},
     "examples": [
         {
-            "email": "foo@bar.com",
-            "password": "blablabla"
+            "username": "santaIsReal",
+            "email": "realSanta@gmail.com",
+            "password": "AINCOléEINfcdlaEAFacsca123"
         }
     ],
     "required": [
+        "username",
         "email",
         "password"
     ],
     "properties": {
+        "username": {
+            "$id": "#/properties/username",
+            "type": "string",
+            "title": "The username schema",
+            "description": "Username can be used for login",
+            "default": "",
+            "examples": [
+                "santaIsReal"
+            ]
+        },
         "email": {
             "$id": "#/properties/email",
             "type": "string",
             "title": "The email schema",
-            "description": "Email used for the login",
+            "description": "Email of the user",
             "default": "",
             "examples": [
-                "foo@bar.com"
+                "realSanta@gmail.com"
             ]
         },
         "password": {
             "$id": "#/properties/password",
             "type": "string",
             "title": "The password schema",
-            "description": "Password for the login, encrypted",
+            "description": "Password given by the user",
             "default": "",
             "examples": [
-                "blablabla"
+                "AINCOléEINfcdlaEAFacsca123"
             ]
         }
     },
