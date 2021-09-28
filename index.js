@@ -9,10 +9,6 @@ var data = require('./data')
 // Setup passport
 require('./authentication').setup(passport, data)
 
-app.post('/test', upload.array('images', 4), (req, res) => {
-    console.log(req.files )
-    res.sendStatus(200)
-})
 
 // json parsing middleware (bodyparser is deprecated)
 app.use(express.urlencoded({extended: true}));

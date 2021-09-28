@@ -11,22 +11,10 @@
             "description": "A coffee mug to drink coffee or tea in the morning",
             "category": "Kitchen utilities",
             "location": "Oulu, FI",
-            "images": [
-                "pic1.png",
-                "pic2.png",
-                "pic3.png",
-                "pic4.png"
-            ],
-            "price": "25",
-            "dateOfPosting": "2012-09-27",
+            "askingPrice": "25",
             "deliveryType": "Shipping",
-            "contactInfo": {
-                "name": "Herjuno",
-                "street": "Tutkijantie 20",
-                "postCode": "90123",
-                "city": "Oulu",
-                "country": "FI"
-            }
+            "senderName": "Herjuno",
+            "senderEmail": "foo@bar.com"
         }
     ],
     "required": [
@@ -34,11 +22,12 @@
         "description",
         "category",
         "location",
-        "price",
-        "dateOfPosting",
+        "askingPrice", 
         "deliveryType",
-        "contactInfo"
+        "senderName", 
+        "senderEmail"
     ],
+
     "properties": {
         "title": {
             "$id": "#/properties/title",
@@ -80,54 +69,15 @@
                 "Oulu, FI"
             ]
         },
-        "images": {
-            "$id": "#/properties/images",
-            "type": "array",
-            "title": "The images schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": [],
-            "examples": [
-                [
-                    "pic1.png",
-                    "pic2.png"
-                ]
-            ],
-            "additionalItems": true,
-            "items": {
-                "$id": "#/properties/images/items",
-                "anyOf": [
-                    {
-                        "$id": "#/properties/images/items/anyOf/0",
-                        "type": "string",
-                        "title": "The first anyOf schema",
-                        "description": "An explanation about the purpose of this instance.",
-                        "default": "",
-                        "examples": [
-                            "pic1.png",
-                            "pic2.png"
-                        ]
-                    }
-                ]
-            }
-        },
-        "price": {
-            "$id": "#/properties/price",
+        
+        "askingPrice": {
+            "$id": "#/properties/askingPrice",
             "type": "string",
-            "title": "The price schema",
+            "title": "The askingPrice schema",
             "description": "An explanation about the purpose of this instance.",
             "default": "",
             "examples": [
                 "25"
-            ]
-        },
-        "dateOfPosting": {
-            "$id": "#/properties/dateOfPosting",
-            "type": "string",
-            "title": "The dateOfPosting schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": "",
-            "examples": [
-                "2012-09-27"
             ]
         },
         "deliveryType": {
@@ -140,82 +90,26 @@
                 "Shipping"
             ]
         },
-        "contactInfo": {
-            "$id": "#/properties/contactInfo",
-            "type": "object",
-            "title": "The contactInfo schema",
+        "senderName": {
+            "$id": "#/properties/senderName",
+            "type": "string",
+            "title": "The senderName schema",
             "description": "An explanation about the purpose of this instance.",
-            "default": {},
+            "default": "",
             "examples": [
-                {
-                    "name": "Herjuno",
-                    "street": "Tutkijantie 20",
-                    "postCode": "90123",
-                    "city": "Oulu",
-                    "country": "FI"
-                }
-            ],
-            "required": [
-                "name",
-                "street",
-                "postCode",
-                "city",
-                "country"
-            ],
-            "properties": {
-                "name": {
-                    "$id": "#/properties/contactInfo/properties/name",
-                    "type": "string",
-                    "title": "The name schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": "",
-                    "examples": [
-                        "Herjuno"
-                    ]
-                },
-                "street": {
-                    "$id": "#/properties/contactInfo/properties/street",
-                    "type": "string",
-                    "title": "The street schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": "",
-                    "examples": [
-                        "Tutkijantie 20"
-                    ]
-                },
-                "postCode": {
-                    "$id": "#/properties/contactInfo/properties/postCode",
-                    "type": "string",
-                    "title": "The postCode schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": "",
-                    "examples": [
-                        "90123"
-                    ]
-                },
-                "city": {
-                    "$id": "#/properties/contactInfo/properties/city",
-                    "type": "string",
-                    "title": "The city schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": "",
-                    "examples": [
-                        "Oulu"
-                    ]
-                },
-                "country": {
-                    "$id": "#/properties/contactInfo/properties/country",
-                    "type": "string",
-                    "title": "The country schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": "",
-                    "examples": [
-                        "FI"
-                    ]
-                }
-            },
-            "additionalProperties": true
+                "Herjuno"
+            ]
+        },
+        "senderEmail": {
+            "$id": "#/properties/senderEmail",
+            "type": "string",
+            "title": "The senderEmail schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "foo@bar.com"
+            ]
         }
     },
-    "additionalProperties": true
+    "additionalProperties": false
 }
