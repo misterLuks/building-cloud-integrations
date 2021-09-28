@@ -1,4 +1,4 @@
-module.exports = function(app, passport, data){
+module.exports = function(passport, data){
     let router = require('express').Router()
     const multer = require('multer')
     const upload = multer({ dest: 'images/' }).array('images', 4)
@@ -13,8 +13,26 @@ module.exports = function(app, passport, data){
     // const itemSchema = require('../schemas/item.schema.json')
     // const itemValidator = ajv.compile(itemSchema)
 
-    router.get('/', passport.authenticate('jwt', {session: false}),(req, res) => {
-        res.send('hi item')
+    // router.get('/', passport.authenticate('jwt', {session: false}),(req, res) => {
+    router.get('/',(req, res) => {
+        res.send(data.items.filter(item => {
+            if (req.query.location != undefined) {
+                if (item.location != req.query.location) {
+                    return false;
+                }
+            }
+            if (req.query.date != undefined) {
+                if (item.location != req.query.location) {
+                    return false;
+                }
+            }
+            if (req.query.category != undefined) {
+                if (item.location != req.query.location) {
+                    return false;
+                }
+            }
+            return true
+        }))
     })
 
     
