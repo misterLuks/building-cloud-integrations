@@ -1,4 +1,4 @@
-module.exports = function(app, passport, data){
+module.exports = function(passport, data){
     let router = require('express').Router()
     const Ajv = require('ajv')
     const ajv = new Ajv()
@@ -7,21 +7,21 @@ module.exports = function(app, passport, data){
     // const itemSchema = require('../schemas/item.schema.json')
     // const itemValidator = ajv.compile(itemSchema)
 
-    router.get('/', passport.authenticate('jwt', {session: false}),(req, res) => {
-        console.log(req.params.location)
+    // router.get('/', passport.authenticate('jwt', {session: false}),(req, res) => {
+    router.get('/',(req, res) => {
         res.send(data.items.filter(item => {
-            if (req.params.location != undefined) {
-                if (item.location != req.params.location) {
+            if (req.query.location != undefined) {
+                if (item.location != req.query.location) {
                     return false;
                 }
             }
-            if (req.params.date != undefined) {
-                if (item.location != req.params.location) {
+            if (req.query.date != undefined) {
+                if (item.location != req.query.location) {
                     return false;
                 }
             }
-            if (req.params.category != undefined) {
-                if (item.location != req.params.location) {
+            if (req.query.category != undefined) {
+                if (item.location != req.query.location) {
                     return false;
                 }
             }
