@@ -1,0 +1,149 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "array",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": [],
+    "examples": [
+        [
+            {
+                "title": "Coffee mug",
+                "description": "A coffee mug to drink coffee",
+                "category": "Kitchen utilities",
+                "location": "Oulu, FI",
+                "askingPrice": "25",
+                "deliveryType": "Shipping",
+                "senderName": "Herjuno",
+                "senderEmail": "foo@bar.com"
+            },
+            {
+                "title": "Coffee",
+                "description": "Black coffee",
+                "category": "Drinks",
+                "location": "Oulu, FI",
+                "askingPrice": "25",
+                "deliveryType": "Shipping",
+                "senderName": "Herjuno",
+                "senderEmail": "foo@bar.com"
+            }
+        ]
+    ],
+    "items": {
+        "$id": "#/items",
+        "anyOf": [
+            {
+                "$id": "#/items/anyOf/0",
+                "type": "object",
+                "title": "The first anyOf schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                    {
+                        "title": "Coffee mug",
+                        "description": "A coffee mug to drink coffee",
+                        "category": "Kitchen utilities",
+                        "location": "Oulu, FI",
+                        "askingPrice": "25",
+                        "deliveryType": "Shipping",
+                        "senderName": "Herjuno",
+                        "senderEmail": "foo@bar.com"
+                    }
+                ],
+                "required": [
+                    "title",
+                    "description",
+                    "category",
+                    "location",
+                    "askingPrice",
+                    "deliveryType",
+                    "senderName",
+                    "senderEmail"
+                ],
+                "properties": {
+                    "title": {
+                        "$id": "#/items/anyOf/0/properties/title",
+                        "type": "string",
+                        "title": "The title schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "Coffee mug"
+                        ]
+                    },
+                    "description": {
+                        "$id": "#/items/anyOf/0/properties/description",
+                        "type": "string",
+                        "title": "The description schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "A coffee mug to drink coffee"
+                        ]
+                    },
+                    "category": {
+                        "$id": "#/items/anyOf/0/properties/category",
+                        "type": "string",
+                        "title": "The category schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "Kitchen utilities"
+                        ]
+                    },
+                    "location": {
+                        "$id": "#/items/anyOf/0/properties/location",
+                        "type": "string",
+                        "title": "The location schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "Oulu, FI"
+                        ]
+                    },
+                    "askingPrice": {
+                        "$id": "#/items/anyOf/0/properties/askingPrice",
+                        "type": "string",
+                        "title": "The askingPrice schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "25"
+                        ]
+                    },
+                    "deliveryType": {
+                        "$id": "#/items/anyOf/0/properties/deliveryType",
+                        "type": "string",
+                        "title": "The deliveryType schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "Shipping"
+                        ]
+                    },
+                    "senderName": {
+                        "$id": "#/items/anyOf/0/properties/senderName",
+                        "type": "string",
+                        "title": "The senderName schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "Herjuno"
+                        ]
+                    },
+                    "senderEmail": {
+                        "$id": "#/items/anyOf/0/properties/senderEmail",
+                        "type": "string",
+                        "title": "The senderEmail schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "foo@bar.com"
+                        ]
+                    }
+                },
+                "additionalProperties": false
+            }
+        ]
+    }
+}

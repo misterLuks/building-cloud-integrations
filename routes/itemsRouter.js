@@ -35,8 +35,8 @@ module.exports = function(passport, data){
         }))
     })
 
-    //passport.authenticate('jwt', {session: false}),
-    router.post('/',  (req, res) => {
+    //
+    router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
         upload(req, res, function (err) {
             if (err instanceof multer.MulterError) {
                 // A Multer error occurred when uploading.
