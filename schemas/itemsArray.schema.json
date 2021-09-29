@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "http://example.com/example.json",
+    "$id": "http://example.com/example1.json",
     "type": "array",
     "title": "The root schema",
     "description": "The root schema comprises the entire JSON document.",
@@ -8,6 +8,7 @@
     "examples": [
         [
             {
+                "itemId": "124583013ref",
                 "title": "Coffee mug",
                 "description": "A coffee mug to drink coffee",
                 "category": "Kitchen utilities",
@@ -18,6 +19,7 @@
                 "senderEmail": "foo@bar.com"
             },
             {
+                "id": "hfueowhf9012",
                 "title": "Coffee",
                 "description": "Black coffee",
                 "category": "Drinks",
@@ -40,6 +42,7 @@
                 "default": {},
                 "examples": [
                     {
+                        "itemId": "124583013ref",
                         "title": "Coffee mug",
                         "description": "A coffee mug to drink coffee",
                         "category": "Kitchen utilities",
@@ -61,6 +64,16 @@
                     "senderEmail"
                 ],
                 "properties": {
+                    "itemId": {
+                        "$id": "#/items/anyOf/0/properties/id",
+                        "type": "string",
+                        "title": "The id schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "124583013ref"
+                        ]
+                    },
                     "title": {
                         "$id": "#/items/anyOf/0/properties/title",
                         "type": "string",

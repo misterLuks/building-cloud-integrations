@@ -22,12 +22,12 @@ module.exports = function(passport, data){
                 }
             }
             if (req.query.date != undefined) {
-                if (item.location != req.query.location) {
+                if (item.date != req.query.date) {
                     return false;
                 }
             }
             if (req.query.category != undefined) {
-                if (item.location != req.query.location) {
+                if (item.category != req.query.category) {
                     return false;
                 }
             }
@@ -51,7 +51,7 @@ module.exports = function(passport, data){
                 if(validationResult) {
                     const itemId = uuidv4()
                     data['items'].push({
-                        id : itemId,
+                        itemId : itemId,
                         title : req.body.title,
                         description : req.body.description,
                         category : req.body.category,
@@ -59,8 +59,8 @@ module.exports = function(passport, data){
                         images : req.files,
                         askingPrice : req.body.askingPrice,
                         deliveryType : req.body.deliveryType,
-                        senderName : req.body.name,
-                        senderEmail : req.body.email, 
+                        senderName : req.body.senderName,
+                        senderEmail : req.body.senderEmail, 
                     })
                     res.json({itemId : itemId})
                 } else {
@@ -72,7 +72,7 @@ module.exports = function(passport, data){
      })
 
     router.get('/:itemId', (req, res) => {
-        let index = data['items'].findIndex(item => item.id === req.params.itemId)
+        let index = data.items.findIndex(item => item.itemId === req.params.itemId)
         if (index !== -1) {
             const requestedData = data.items[index]
             res.json(requestedData)
@@ -82,8 +82,7 @@ module.exports = function(passport, data){
         
     })
 
-    //passport.authenticate('jwt', {session: false}), 
-    router.put('/:itemId',  (req, res) => {
+    router.put('/:itemId', passport.authenticate('jwt', {session: false}),  (req, res) => {
         upload(req, res, function (err) {
             if (err instanceof multer.MulterError) {
                 // A Multer error occurred when uploading.
@@ -95,13 +94,9 @@ module.exports = function(passport, data){
             } else {
                 const validationResult = itemValidator(req.body)
                 if(validationResult) {
-                    let index = data['items'].findIndex(item => item.id === req.params.itemId)
+                    let index = data.items.findIndex(item => item.itemId === req.params.itemId)
                     if(index !== -1) {
                         let requestedData =  data.items[index]
-                        console.log(data.items[index])
-                        console.log("BODY")
-                        console.log(req.body)
-
                         requestedData.title = req.body.title
                         requestedData.description = req.body.description
                         requestedData.category = req.body.category
@@ -109,8 +104,8 @@ module.exports = function(passport, data){
                         requestedData.images = req.files
                         requestedData.askingPrice = req.body.askingPrice
                         requestedData.deliveryType = req.body.deliveryType
-                        requestedData.senderName = req.body.name
-                        requestedData.senderEmail = req.body.email
+                        requestedData.senderName = req.body.senderName
+                        requestedData.senderEmail = req.body.senderEmail
 
 
                         res.json(requestedData)
@@ -123,9 +118,9 @@ module.exports = function(passport, data){
         })
     })
 
-    //passport.authenticate('jwt', {session: false}),
-    router.delete('/:itemId', (req, res) => {
-        let index = data['items'].findIndex(item => item.id === req.params.itemId)
+
+    router.delete('/:itemId', passport.authenticate('jwt', {session: false}), (req, res) => {
+        let index = data.items.findIndex(item => item.itemId === req.params.itemId)
         if(index !== -1) {
             data['items'].splice(index, 1)
         }
