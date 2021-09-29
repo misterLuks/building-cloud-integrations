@@ -2,14 +2,22 @@ const chai = require('chai')
 const expect = chai.expect
 const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
+const chaiJsonSchemaAjv = require('chai-json-schema-ajv')
+chai.use(chaiJsonSchemaAjv)
+
+const server = require('../server');
+const serverAddress = "http://localhost:3000"
+
 
 describe('/items/ API Tests ', function() {
     before(function() {
         //starting the server
+        server.start()
     })
 
     after(function() {
         //ending the server
+        server.close()
     })
 
 
@@ -52,7 +60,7 @@ describe('/items/ API Tests ', function() {
         })
 
         it('should reject request with more than four images', function() {
-            
+
         })
 
     })
