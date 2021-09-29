@@ -35,6 +35,6 @@ module.exports = {
     })
   },
   close: () => {
-    server.close()
+    serverInstance.close()
   }
 }
