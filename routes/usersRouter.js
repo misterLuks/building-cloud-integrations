@@ -12,7 +12,7 @@ module.exports = function(passport, data){
     const userValidator = ajv.compile(userSchema)
 
   
-
+    //Should be removed after testing
     router.get('/', (req, res) => {
         res.send(data.users)
     })
