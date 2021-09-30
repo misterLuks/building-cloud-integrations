@@ -23,7 +23,7 @@ app.use('/users', usersRoutes)
 app.use('/items', itemsRoutes)
 
 
-const port = 3000
+const port = process.env.PORT || 3000
 // launch app
 
 let serverInstance = null
