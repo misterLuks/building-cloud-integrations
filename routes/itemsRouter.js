@@ -21,7 +21,6 @@ module.exports = function(passport, data){
     const itemSchema = require('../schemas/item.schema.json')
     const itemValidator = ajv.compile(itemSchema)
 
-    //passport.authenticate('jwt', {session: false}),
     router.get('/',  (req, res) => {
         res.send(data.items.filter(item => {
             if (req.query.location != undefined) {
@@ -43,7 +42,7 @@ module.exports = function(passport, data){
         }))
     })
 
-    //
+
     router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
         upload(req, res, function (err) {
             if (err instanceof multer.MulterError) {
