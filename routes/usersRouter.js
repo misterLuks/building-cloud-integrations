@@ -1,6 +1,18 @@
 
+// 
+// Submission of Lucas Aebi and Michael Meier
+//
 
 module.exports = function(passport, data){
+
+    // This function creates and returns a router object. 
+    // A router is a collection of http routes/endpoints
+    // that can be attached to a express app.
+    // 
+    // The router configured in this function is responsible
+    // for creating, modifying, deleting users
+
+
     const bcrypt = require('bcryptjs')
     let router = require('express').Router()
     const { v4: uuidv4 } = require('uuid');
@@ -12,11 +24,6 @@ module.exports = function(passport, data){
     const userValidator = ajv.compile(userSchema)
 
   
-    //Should be removed after testing
-    router.get('/', (req, res) => {
-        res.send(data.users)
-    })
-
 
     router.post('/', (req, res) => {
         

@@ -1,3 +1,12 @@
+
+// 
+// Submission of Lucas Aebi and Michael Meier
+//
+
+// Note that to keep this file (and others) neat and tidy
+// the code was split up into multiple files.
+
+
 const express =  require('express')
 const app = express()
 const passport = require('passport')
@@ -6,7 +15,9 @@ const passport = require('passport')
 // Set up global data state
 var data = require('./data')
 
-// Setup passport
+// Setup authentication
+// This funtion will configure all authentication stuff
+// including http basic and jwt using passport
 require('./authentication').setup(passport, data)
 
 
@@ -15,19 +26,23 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads
 
 // Import routes
+// The imports are actually functions that create a router
+// object using the above created passport and data objects
 let usersRoutes = require('./routes/usersRouter')(passport, data)
 let itemsRoutes = require('./routes/itemsRouter')(passport, data)
 
-// use imported routes
+// Attatch the imported routes to the corresponding endpoints
 app.use('/users', usersRoutes)
 app.use('/items', itemsRoutes)
 
 
+// if a port is provided via env var use it, otherwise use port 3000
 const port = process.env.PORT || 3000
-// launch app
 
+// placeholder for an instance of the server
 let serverInstance = null
 
+// Now export two functions to start and stop the server from another script
 module.exports = {
   start: () => {
     serverInstance = app.listen(port, () => {

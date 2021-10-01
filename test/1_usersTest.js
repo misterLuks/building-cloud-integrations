@@ -1,3 +1,8 @@
+
+// 
+// Submission of Lucas Aebi and Michael Meier
+//
+
 const chai = require('chai')
 const expect = chai.expect
 const chaiHttp = require('chai-http')
@@ -31,18 +36,6 @@ describe('/users/ API Tests ', function() {
         done()
     })
 
-    //This route is just for testing purposes
-    describe('GET /', function(done) {
-        it('should return an array of users', function(done) {
-            chai.request(serverAddress)
-            .get('/users/')
-            .end(function(err, res) {
-                expect(err).to.be.null
-                expect(res).to.have.status(200)
-                done()
-            })
-        })
-    })
 
     describe('POST /', function() {
         it('should accept item data when data is correct and return userid', function(done) {

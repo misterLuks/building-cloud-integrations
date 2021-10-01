@@ -1,3 +1,8 @@
+
+// 
+// Submission of Lucas Aebi and Michael Meier
+//
+
 const jwt = require('jsonwebtoken')
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
@@ -5,7 +10,9 @@ const BasicStrategy = require('passport-http').BasicStrategy;
 const bcrypt = require('bcryptjs')
 
 
-// const secrets = require('./secret.json')
+// The secret is stored in a environmental variable
+// This env var may has to be set manualy, but using
+// mpn run test or npm run dev will set it also
 const secrets = process.env.SECRET 
 
     
@@ -20,7 +27,8 @@ let sign = (userId) => {
 
 
 
-
+// This function configures the passport 
+// middleware correctly
 let setup = (passport, data) => {
     // setup JWTStragety
 

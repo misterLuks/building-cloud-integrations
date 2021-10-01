@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha",
+    "test": "SECRET=secret npx mocha",
     "dev": "SECRET=secret node index.js",
     "server": "node index.js"
   },

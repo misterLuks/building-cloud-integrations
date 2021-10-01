@@ -1,4 +1,18 @@
+
+// 
+// Submission of Lucas Aebi and Michael Meier
+//
+
 module.exports = function(passport, data){
+
+    // This function creates and returns a router object. 
+    // A router is a collection of http routes/endpoints
+    // that can be attached to a express app.
+    // 
+    // The router configured in this function is responsible
+    // for all actions regarding items
+
+
     let router = require('express').Router()
     const multer = require('multer')
     // const upload = multer({ dest: 'images/' }).array('images', 4)
