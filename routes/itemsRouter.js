@@ -6,7 +6,7 @@ module.exports = function(passport, data){
     const ajv = new Ajv()
     const { v4: uuidv4 } = require('uuid');
 
-    var cloudinary = require('cloudinary')
+    var cloudinary = require('cloudinary').v2
     var cloudinaryStorage = require('multer-storage-cloudinary')
 
     var storage = cloudinaryStorage({
