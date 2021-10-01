@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "http://example.com/example1.json",
+    "$id": "http://example.com/example.json",
     "type": "array",
     "title": "The root schema",
     "description": "The root schema comprises the entire JSON document.",
@@ -13,18 +13,20 @@
                 "description": "A coffee mug to drink coffee",
                 "category": "Kitchen utilities",
                 "location": "Oulu, FI",
-                "askingPrice": "25",
+                "askingPrice": 25,
+                "dateOfPosting": 1633078019,
                 "deliveryType": "Shipping",
                 "senderName": "Herjuno",
                 "senderEmail": "foo@bar.com"
             },
             {
-                "id": "hfueowhf9012",
+                "itemId": "hfueowhf9012",
                 "title": "Coffee",
                 "description": "Black coffee",
                 "category": "Drinks",
                 "location": "Oulu, FI",
-                "askingPrice": "25",
+                "askingPrice": 10,
+                "dateOfPosting": 1633078020,
                 "deliveryType": "Shipping",
                 "senderName": "Herjuno",
                 "senderEmail": "foo@bar.com"
@@ -47,7 +49,8 @@
                         "description": "A coffee mug to drink coffee",
                         "category": "Kitchen utilities",
                         "location": "Oulu, FI",
-                        "askingPrice": "25",
+                        "askingPrice": 25,
+                        "dateOfPosting": 1633078019,
                         "deliveryType": "Shipping",
                         "senderName": "Herjuno",
                         "senderEmail": "foo@bar.com"
@@ -59,15 +62,16 @@
                     "category",
                     "location",
                     "askingPrice",
+                    "dateOfPosting",
                     "deliveryType",
                     "senderName",
                     "senderEmail"
                 ],
                 "properties": {
                     "itemId": {
-                        "$id": "#/items/anyOf/0/properties/id",
+                        "$id": "#/items/anyOf/0/properties/itemId",
                         "type": "string",
-                        "title": "The id schema",
+                        "title": "The itemId schema",
                         "description": "An explanation about the purpose of this instance.",
                         "default": "",
                         "examples": [
@@ -116,12 +120,22 @@
                     },
                     "askingPrice": {
                         "$id": "#/items/anyOf/0/properties/askingPrice",
-                        "type": "string",
+                        "type": "integer",
                         "title": "The askingPrice schema",
                         "description": "An explanation about the purpose of this instance.",
-                        "default": "",
+                        "default": 0,
                         "examples": [
-                            "25"
+                            25
+                        ]
+                    },
+                    "dateOfPosting": {
+                        "$id": "#/items/anyOf/0/properties/dateOfPosting",
+                        "type": "integer",
+                        "title": "The dateOfPosting schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 0,
+                        "examples": [
+                            1633078019
                         ]
                     },
                     "deliveryType": {

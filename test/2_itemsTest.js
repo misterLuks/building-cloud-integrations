@@ -59,7 +59,7 @@ describe('/items/ API Tests ', function() {
                 description: "A coffee mug to drink coffee or tea in the morning",
                 category: "Kitchen utilities",
                 location: "Oulu, FI",
-                askingPrice: "25",
+                askingPrice: 50,
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"
@@ -80,7 +80,7 @@ describe('/items/ API Tests ', function() {
                 description: "Just plain coffee ",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: "25",
+                askingPrice: 200,
                 deliveryType: "Shipping",
                 senderName: "Herjuno"
             }).end(function(err, res) {
@@ -99,7 +99,7 @@ describe('/items/ API Tests ', function() {
                 description: "Just plain tea",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: "25",
+                askingPrice: 2,
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: 78598012
@@ -119,7 +119,7 @@ describe('/items/ API Tests ', function() {
                 description: "yummy",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: "25",
+                askingPrice: 25,
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com",
@@ -142,6 +142,32 @@ describe('/items/ API Tests ', function() {
                 done()
             }) 
         })
+
+        /*
+        it('should reject more than 4 images', function(done) {
+            chai.request(serverAddress)
+            .post('/items')
+            .set({ "Authorization": `Bearer ${token}` })
+            //.type('form')
+            .field('title', 'Chicken nugget')
+            .field('description', 'yummy')
+            .field('category', 'Food')
+            .field('location', 'Oulu')
+            .field('askingPrice', 25)
+            .field('deliveryType', "Delivery")
+            .field('senderName', "John")
+            .field('senderEmail', "John@test.com")
+            //.attach('images', './test/image1.png', 'test.png')
+            .end(function(err, res) {
+                expect(err).to.be.null
+                expect(res).to.have.status(200)
+                done()
+            })
+
+        })
+        */
+        
+
     })
 
     describe('GET /', function() {
@@ -167,7 +193,7 @@ describe('/items/ API Tests ', function() {
                 description: "Just plain coffee",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: "25",
+                askingPrice: 25,
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"
@@ -182,7 +208,7 @@ describe('/items/ API Tests ', function() {
                 description: "Just plain tea",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: "25",
+                askingPrice: 25,
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"
@@ -240,7 +266,7 @@ describe('/items/ API Tests ', function() {
                 description: "yummy",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: "25",
+                askingPrice: 25,
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"
@@ -269,7 +295,7 @@ describe('/items/ API Tests ', function() {
                 description: "yummy",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: "25",
+                askingPrice: 25,
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"

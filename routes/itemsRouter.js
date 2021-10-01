@@ -50,13 +50,14 @@ module.exports = function(passport, data){
                 const validationResult = itemValidator(req.body)
                 if(validationResult) {
                     const itemId = uuidv4()
-                    data['items'].push({
+                    data.items.push({
                         itemId : itemId,
                         title : req.body.title,
                         description : req.body.description,
                         category : req.body.category,
                         location : req.body.location,
                         images : req.files,
+                        dateOfPosting : Date.now(),
                         askingPrice : req.body.askingPrice,
                         deliveryType : req.body.deliveryType,
                         senderName : req.body.senderName,
@@ -102,6 +103,7 @@ module.exports = function(passport, data){
                         requestedData.category = req.body.category
                         requestedData.location = req.body.location
                         requestedData.images = req.files
+                        dateOfPosting : Date.now()
                         requestedData.askingPrice = req.body.askingPrice
                         requestedData.deliveryType = req.body.deliveryType
                         requestedData.senderName = req.body.senderName
