@@ -1,12 +1,20 @@
 module.exports = function(passport, data){
     let router = require('express').Router()
     const multer = require('multer')
-    const upload = multer({ dest: 'images/' }).array('images', 4)
+    // const upload = multer({ dest: 'images/' }).array('images', 4)
     const Ajv = require('ajv')
     const ajv = new Ajv()
     const { v4: uuidv4 } = require('uuid');
 
+    var cloudinary = require('cloudinary')
+    var cloudinaryStorage = require('multer-storage-cloudinary')
 
+    var storage = cloudinaryStorage({
+        cloudinary: cloudinary,
+        folder: '',
+        allowedFormats: ['jpg', 'png']
+    })
+    const upload = multer({ storage: storage, dest: 'images/' }).array('images', 4)
 
 
     //Initialize JSON Validator
