@@ -6,7 +6,8 @@ const chaiJsonSchemaAjv = require('chai-json-schema-ajv')
 chai.use(chaiJsonSchemaAjv)
 const server = require('../server');
 
-const serverAddress = "http://localhost:3000"
+//const serverAddress = "http://localhost:3000"
+const serverAddress = "https://cloud-integrations-api.herokuapp.com"
 
 let token = null
 
@@ -79,7 +80,7 @@ describe('/users/ API Tests ', function() {
             })
             .end((err, res) => {
                 expect(err).to.be.null
-                expect(res).to.have.status(400)
+                expect(res).to.have.status(409)
                 done()
             })
         })

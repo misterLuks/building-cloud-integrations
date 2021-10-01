@@ -7,7 +7,8 @@ chai.use(chaiJsonSchemaAjv)
 const fs = require('fs');
 
 const server = require('../server');
-const serverAddress = "http://localhost:3000"
+//const serverAddress = "http://localhost:3000"
+const serverAddress = "https://cloud-integrations-api.herokuapp.com"
 
 const itemsArraySchema = require('../schemas/itemsArray.schema.json')
 const itemSchema = require('../schemas/item.schema.json')

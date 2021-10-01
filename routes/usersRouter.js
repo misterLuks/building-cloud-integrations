@@ -23,7 +23,7 @@ module.exports = function(passport, data){
         const validationResult = userValidator(req.body)
         if(validationResult) {
             if (data.users.find(user => user.email === req.body.email) != undefined ){
-                res.status(400)
+                res.status(409)
                 res.send("email already exists in database")
                 return
             }
