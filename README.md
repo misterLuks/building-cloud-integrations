@@ -13,7 +13,13 @@ npm run dev
 SECRET="secret" npm run server
 # or
 SECRET="secret" node index.js
+```
 
+To run the test
+```bash
+SECRET="secret" npx mocha
+# or 
+npm run test
 ```
 
 ## Online Server
