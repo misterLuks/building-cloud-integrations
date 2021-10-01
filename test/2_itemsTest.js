@@ -12,8 +12,8 @@ chai.use(chaiJsonSchemaAjv)
 const fs = require('fs');
 
 const server = require('../server');
-//const serverAddress = "http://localhost:3000"
-const serverAddress = "https://cloud-integrations-api.herokuapp.com"
+const serverAddress = "http://localhost:3000"
+//const serverAddress = "https://cloud-integrations-api.herokuapp.com"
 
 const itemsArraySchema = require('../schemas/itemsArray.schema.json')
 const itemSchema = require('../schemas/item.schema.json')
@@ -32,14 +32,14 @@ describe('/items/ API Tests ', function() {
         .post('/users')
         .send({
             username: "test",
-            email: "test@gmail.com",
+            email: "test1@gmail.com",
             password: "test123"
         }).end()
         
         //Log the user in and save the token for later usage
         chai.request(serverAddress)
         .post('/users/login')
-        .auth("test@gmail.com", "test123")
+        .auth("test1@gmail.com", "test123")
         .end(function(err, res) {
             expect(err).to.be.null
             expect(res).to.have.status(200)

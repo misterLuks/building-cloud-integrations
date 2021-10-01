@@ -11,8 +11,8 @@ const chaiJsonSchemaAjv = require('chai-json-schema-ajv')
 chai.use(chaiJsonSchemaAjv)
 const server = require('../server');
 
-//const serverAddress = "http://localhost:3000"
-const serverAddress = "https://cloud-integrations-api.herokuapp.com"
+const serverAddress = "http://localhost:3000"
+//const serverAddress = "https://cloud-integrations-api.herokuapp.com"
 
 let token = null
 
