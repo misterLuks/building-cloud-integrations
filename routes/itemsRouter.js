@@ -6,15 +6,15 @@ module.exports = function(passport, data){
     const ajv = new Ajv()
     const { v4: uuidv4 } = require('uuid');
 
-    var cloudinary = require('cloudinary')
-    var cloudinaryStorage = require('multer-storage-cloudinary')
+    var cloudinary = require('cloudinary').v2;
+    var { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-    var storage = cloudinaryStorage({
+    var storage = new CloudinaryStorage({
         cloudinary: cloudinary,
-        folder: '',
+        folder: 'images',
         allowedFormats: ['jpg', 'png']
     })
-    const upload = multer({ storage: storage, dest: 'images/' }).array('images', 4)
+    const upload = multer({ storage: storage }).array('images', 4)
 
 
     //Initialize JSON Validator
