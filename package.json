@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx mocha",
+    "dev": "SECRET=secret node index.js",
     "server": "node index.js"
   },
   "author": "",

@@ -5,15 +5,17 @@ const BasicStrategy = require('passport-http').BasicStrategy;
 const bcrypt = require('bcryptjs')
 
 
-const secrets = require('./secret.json')
+// const secrets = require('./secret.json')
+const secrets = process.env.SECRET 
+
     
 const options = {
     jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey : secrets.secretCode
+    secretOrKey : secrets
 }
 
 let sign = (userId) => {
-    return jwt.sign({ userId: userId }, secrets.secretCode)
+    return jwt.sign({ userId: userId }, secrets)
 }
 
 
