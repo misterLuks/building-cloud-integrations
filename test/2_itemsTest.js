@@ -27,14 +27,14 @@ describe('/items/ API Tests ', function() {
         .post('/users')
         .send({
             username: "test",
-            email: "test@gmail.com",
+            email: "test1@gmail.com",
             password: "test123"
         }).end()
         
         //Log the user in and save the token for later usage
         chai.request(serverAddress)
         .post('/users/login')
-        .auth("test@gmail.com", "test123")
+        .auth("test1@gmail.com", "test123")
         .end(function(err, res) {
             expect(err).to.be.null
             expect(res).to.have.status(200)
