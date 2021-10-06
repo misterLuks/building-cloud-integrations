@@ -72,6 +72,7 @@ module.exports = function(passport, data){
                 if(validationResult) {
                     const itemId = uuidv4()
                     data.items.push({
+                        userId: req.user.id,
                         itemId : itemId,
                         title : req.body.title,
                         description : req.body.description,
@@ -114,24 +115,32 @@ module.exports = function(passport, data){
                 res.sendStatus(400)
                 // An unknown error occurred when uploading. 
             } else {
+
                 const validationResult = itemValidator(req.body)
                 if(validationResult) {
                     let index = data.items.findIndex(item => item.itemId === req.params.itemId)
+
                     if(index !== -1) {
                         let requestedData =  data.items[index]
-                        requestedData.title = req.body.title
-                        requestedData.description = req.body.description
-                        requestedData.category = req.body.category
-                        requestedData.location = req.body.location
-                        requestedData.images = req.files
-                        dateOfPosting : Date.now()
-                        requestedData.askingPrice = req.body.askingPrice
-                        requestedData.deliveryType = req.body.deliveryType
-                        requestedData.senderName = req.body.senderName
-                        requestedData.senderEmail = req.body.senderEmail
+
+                        // make sure the user is the creator of this item
+                        if (requestedData.userId != req.user.userId){
+                            res.sendStatus(401)
+                        } else {
+                            requestedData.title = req.body.title
+                            requestedData.description = req.body.description
+                            requestedData.category = req.body.category
+                            requestedData.location = req.body.location
+                            requestedData.images = req.files
+                            requestedData.dateOfPosting = Date.now()
+                            requestedData.askingPrice = req.body.askingPrice
+                            requestedData.deliveryType = req.body.deliveryType
+                            requestedData.senderName = req.body.senderName
+                            requestedData.senderEmail = req.body.senderEmail
 
 
-                        res.json(requestedData)
+                            res.json(requestedData)
+                        }
                     } else {
                         res.sendStatus(404)
                     }
@@ -145,7 +154,11 @@ module.exports = function(passport, data){
     router.delete('/:itemId', passport.authenticate('jwt', {session: false}), (req, res) => {
         let index = data.items.findIndex(item => item.itemId === req.params.itemId)
         if(index !== -1) {
-            data['items'].splice(index, 1)
+            if (data.items[index].userId == req.user.userId) {
+                data.items.splice(index, 1)
+            } else {
+                res.sendStatus(401)
+            }
         }
         res.sendStatus(200)
     })
