@@ -36,6 +36,12 @@ app.use('/users', usersRoutes)
 app.use('/items', itemsRoutes)
 
 
+// redirect root request to api documentation
+app.get('/',(req, res) => {
+  res.redirect('https://meierag.stoplight.io/docs/GradedExercise/YXBpOjIyOTk2MDA3-web-shop')
+})
+
+
 // if a port is provided via env var use it, otherwise use port 3000
 const port = process.env.PORT || 3000
 
