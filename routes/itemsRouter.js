@@ -124,7 +124,7 @@ module.exports = function(passport, data){
                         requestedData.category = req.body.category
                         requestedData.location = req.body.location
                         requestedData.images = req.files
-                        dateOfPosting : Date.now()
+                        requestedData.dateOfPosting = Date.now()
                         requestedData.askingPrice = req.body.askingPrice
                         requestedData.deliveryType = req.body.deliveryType
                         requestedData.senderName = req.body.senderName

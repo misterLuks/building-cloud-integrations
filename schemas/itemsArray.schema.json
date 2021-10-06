@@ -17,7 +17,8 @@
                 "dateOfPosting": 1633078019,
                 "deliveryType": "Shipping",
                 "senderName": "Herjuno",
-                "senderEmail": "foo@bar.com"
+                "senderEmail": "foo@bar.com",
+                "userId": "12fuheoh18"
             },
             {
                 "itemId": "hfueowhf9012",
@@ -29,7 +30,8 @@
                 "dateOfPosting": 1633078020,
                 "deliveryType": "Shipping",
                 "senderName": "Herjuno",
-                "senderEmail": "foo@bar.com"
+                "senderEmail": "foo@bar.com",
+                "userId": "12fuhe12roju8"
             }
         ]
     ],
@@ -53,10 +55,12 @@
                         "dateOfPosting": 1633078019,
                         "deliveryType": "Shipping",
                         "senderName": "Herjuno",
-                        "senderEmail": "foo@bar.com"
+                        "senderEmail": "foo@bar.com",
+                        "userId": "12fuheoh18"
                     }
                 ],
                 "required": [
+                    "itemId",
                     "title",
                     "description",
                     "category",
@@ -65,7 +69,8 @@
                     "dateOfPosting",
                     "deliveryType",
                     "senderName",
-                    "senderEmail"
+                    "senderEmail",
+                    "userId"
                 ],
                 "properties": {
                     "itemId": {
@@ -166,6 +171,16 @@
                         "default": "",
                         "examples": [
                             "foo@bar.com"
+                        ]
+                    },
+                    "userId": {
+                        "$id": "#/items/anyOf/0/properties/userId",
+                        "type": "string",
+                        "title": "The userId schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "12fuheoh18"
                         ]
                     }
                 },
