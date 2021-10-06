@@ -12,8 +12,11 @@ const bcrypt = require('bcryptjs')
 
 // The secret is stored in a environmental variable
 // This env var may has to be set manualy, but using
-// mpn run test or npm run dev will set it also
-const secrets = process.env.SECRET || "secret"
+// mpn run test or npm run dev will set it also (on mac/linux)
+
+// The string that is set here should not be used as secret
+// please set an env var in your development/testing/runtime environment
+const secrets = process.env.SECRET || "this is not a secret"
 
     
 const options = {

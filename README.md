@@ -22,6 +22,12 @@ SECRET="secret" npx mocha
 npm run test
 ```
 
+Alternatively set $SECRET yourself and run `npm run server` / `npm run test`
+
+**Note:** these commands work on Linux and Mac only. On Windows use the following instead 
+but be aware that using this method no SECRET is provided to the app and a default value 
+will be used ("this is not a secret").  
+
 ## Online Server
 
 [https://cloud-integrations-api.herokuapp.com](https://cloud-integrations-api.herokuapp.com)
