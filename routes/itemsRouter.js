@@ -72,7 +72,7 @@ module.exports = function(passport, data){
                 if(validationResult) {
                     const itemId = uuidv4()
                     data.items.push({
-                        userId: req.user.id,
+                        userId: req.user.userId,
                         itemId : itemId,
                         title : req.body.title,
                         description : req.body.description,
@@ -154,13 +154,13 @@ module.exports = function(passport, data){
     router.delete('/:itemId', passport.authenticate('jwt', {session: false}), (req, res) => {
         let index = data.items.findIndex(item => item.itemId === req.params.itemId)
         if(index !== -1) {
-            if (data.items[index].userId == req.user.userId) {
+            if (data.items[index].userId === req.user.userId) {
                 data.items.splice(index, 1)
+                res.sendStatus(200)
             } else {
                 res.sendStatus(401)
             }
         }
-        res.sendStatus(200)
     })
 
     return router;
