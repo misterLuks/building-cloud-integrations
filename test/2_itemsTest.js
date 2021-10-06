@@ -51,7 +51,7 @@ describe('/items/ API Tests ', function() {
 
     after(function(done) {
         //ending the server
-        server.close()
+        //server.close()
         done()
     })
 
@@ -311,6 +311,35 @@ describe('/items/ API Tests ', function() {
                 done()
             }) 
         })
+        it('should reject data with no token', function(done) {
+            chai.request(serverAddress)
+                .put(`/items/${itemId}`)
+                .end((err,res) => {
+                    expect(err).to.be.null
+                    expect(res).to.have.status(401)
+                    done()
+                })
+        })
+
+        it('should reject data with wrong token', function(done) {
+            chai.request(serverAddress)
+            .put("/items/123456")
+            .set({ "Authorization": `Bearer Beuiwfnoiewhfbewf` })
+            .send({
+                title: "Chicken nugget",
+                description: "yummy",
+                category: "Food",
+                location: "Oulu, FI",
+                askingPrice: 25,
+                deliveryType: "Shipping",
+                senderName: "Herjuno",
+                senderEmail: "foo@bar.com"
+            }).end(function(err, res) {
+                expect(err).to.be.null
+                expect(res).to.have.status(401)
+                done()
+            }) 
+        })
     })
     
     describe('DELETE /:itemId', function() {
@@ -340,7 +369,6 @@ describe('/items/ API Tests ', function() {
                     expect(res).to.have.status(401)
                     done()
                 })
-
         })
 
         it('should reject data with wrong token', function(done) {
