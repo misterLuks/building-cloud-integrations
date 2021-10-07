@@ -51,7 +51,7 @@ describe('/items/ API Tests ', function() {
 
     after(function(done) {
         //ending the server
-        //server.close()
+        server.close()
         done()
     })
 
