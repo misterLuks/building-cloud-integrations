@@ -86,7 +86,7 @@ describe('/items/ API Tests ', function() {
                 description: "Just plain coffee ",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: 200,
+                askingPrice: "200",
                 deliveryType: "Shipping",
                 senderName: "Herjuno"
             }).end(function(err, res) {
@@ -105,7 +105,7 @@ describe('/items/ API Tests ', function() {
                 description: "Just plain tea",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: 2,
+                askingPrice: "2",
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: 78598012
@@ -125,7 +125,7 @@ describe('/items/ API Tests ', function() {
                 description: "yummy",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: 25,
+                askingPrice: "25",
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com",
@@ -199,7 +199,7 @@ describe('/items/ API Tests ', function() {
                 description: "Just plain coffee",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: 25,
+                askingPrice: "25",
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"
@@ -214,7 +214,7 @@ describe('/items/ API Tests ', function() {
                 description: "Just plain tea",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: 25,
+                askingPrice: "25",
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"
@@ -272,7 +272,7 @@ describe('/items/ API Tests ', function() {
                 description: "yummy",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: 25,
+                askingPrice: "25",
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"
@@ -301,7 +301,7 @@ describe('/items/ API Tests ', function() {
                 description: "yummy",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: 25,
+                askingPrice: "25",
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"
@@ -330,7 +330,7 @@ describe('/items/ API Tests ', function() {
                 description: "yummy",
                 category: "Food",
                 location: "Oulu, FI",
-                askingPrice: 25,
+                askingPrice: "25",
                 deliveryType: "Shipping",
                 senderName: "Herjuno",
                 senderEmail: "foo@bar.com"

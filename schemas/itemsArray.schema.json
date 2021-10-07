@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "http://example.com/example.json",
+    "$id": "http://example.com/example1.json",
     "type": "array",
     "title": "The root schema",
     "description": "The root schema comprises the entire JSON document.",
@@ -13,7 +13,7 @@
                 "description": "A coffee mug to drink coffee",
                 "category": "Kitchen utilities",
                 "location": "Oulu, FI",
-                "askingPrice": 25,
+                "askingPrice": "25",
                 "dateOfPosting": 1633078019,
                 "deliveryType": "Shipping",
                 "senderName": "Herjuno",
@@ -26,7 +26,7 @@
                 "description": "Black coffee",
                 "category": "Drinks",
                 "location": "Oulu, FI",
-                "askingPrice": 10,
+                "askingPrice": "10",
                 "dateOfPosting": 1633078020,
                 "deliveryType": "Shipping",
                 "senderName": "Herjuno",
@@ -51,7 +51,7 @@
                         "description": "A coffee mug to drink coffee",
                         "category": "Kitchen utilities",
                         "location": "Oulu, FI",
-                        "askingPrice": 25,
+                        "askingPrice": "25",
                         "dateOfPosting": 1633078019,
                         "deliveryType": "Shipping",
                         "senderName": "Herjuno",
@@ -60,7 +60,6 @@
                     }
                 ],
                 "required": [
-                    "itemId",
                     "title",
                     "description",
                     "category",
@@ -124,12 +123,12 @@
                     },
                     "askingPrice": {
                         "$id": "#/items/anyOf/0/properties/askingPrice",
-                        "type": "integer",
+                        "type": ["integer", "string"],
                         "title": "The askingPrice schema",
                         "description": "An explanation about the purpose of this instance.",
-                        "default": 0,
+                        "default": "",
                         "examples": [
-                            25
+                            "25"
                         ]
                     },
                     "dateOfPosting": {
